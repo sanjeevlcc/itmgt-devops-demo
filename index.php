@@ -10,7 +10,7 @@
 
   
   <div class="container">
-    <h1>Issued ver 1.2.4000 waallllaaaaaaaaa </h1>
+    <h1>Issued ver 1.2.4000 ,,,,,,,,,,, </h1>
 
     
     <h1>🏨 Welcome to Makalu Hotel Booking</h1>
