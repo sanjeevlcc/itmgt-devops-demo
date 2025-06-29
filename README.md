@@ -1,25 +1,18 @@
-# itmgt-devops-demo
 
+---
 
-# 🏨 Hotel Booking Form
+## 🛠️ Requirements
 
-A lightweight hotel booking form app built with HTML, CSS, JS, and PHP.
+- Docker
+- Docker Compose
 
-## Features
-- Collects guest details
-- Validates dates via JavaScript
-- Processes submission via PHP
+---
 
-## Deployment
-Host in a LAMP/LEMP server or use Docker with PHP support.
+## ⚙️ Setup & Run
 
-## Folder Structure
-itmgt-devops-demo/
-├── Dockerfile
-├── docker-compose.yml
-├── index.php
-├── submit.php
-├── style.css
-├── script.js
-├── README.md
-└── LICENSE
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/your-username/hotel-booking.git
+   cd hotel-booking
+   docker-compose up --d
+   http://localhost:8989
