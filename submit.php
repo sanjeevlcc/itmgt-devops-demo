@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Room Type: $room<br>";
     echo "<p>We look forward to hosting you!!!!!</p>";
 
-    / 🎮 Add Hangman Game Link
+    
     echo "<hr>";
     echo "<p><a href='mojo.php?user=" . urlencode($name) . "'><button>🎮 Play Hangman Game, $name</button></a></p>";
   
