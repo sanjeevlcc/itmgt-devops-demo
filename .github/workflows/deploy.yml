@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - feature1-chiran
+      - feature2-suvash
 
 jobs:
   deploy:
