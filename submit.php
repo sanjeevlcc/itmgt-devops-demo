@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Check-in: $checkin<br>";
     echo "Check-out: $checkout<br>";
     echo "Room Type: $room<br>";
-    echo "<p>We look forward to hosting you!</p>";
+    echo "<p>We look forward to hosting you!!!!!</p>";
 } else {
     echo "❌ Invalid Request";
 }
