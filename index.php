@@ -10,7 +10,7 @@
 
   
   <div class="container">
-    <h1>Issued ver 1.2.4000 Code from CHIRAN........... </h1>
+    <h1>Issued ver 1.2.4000 Code from CHIRAN...........sss </h1>
 
     
     <h1>🏨 Welcome to Makalu Hotel Booking</h1>
