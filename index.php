@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  
   <div class="container">
-    <h1>Issued ver 1.2.333 </h1>
+    <h1>Issued ver 1.2.334 </h1>
     <h1>🏨 Welcome to Makalu Hotel Booking</h1>
     <form action="submit.php" method="POST" onsubmit="return validateForm()">
       <label for="name">Full Name</label>
