@@ -1,3 +1,37 @@
-<?php
-echo "Hello from ITMGT DevOps Demo! Deployed via GitHub Actions 🚀";
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🏨 Welcome to Makalu Hotel Booking</h1>
+    <form action="submit.php" method="POST" onsubmit="return validateForm()">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="checkin">Check-in Date</label>
+      <input type="date" id="checkin" name="checkin" required />
+
+      <label for="checkout">Check-out Date</label>
+      <input type="date" id="checkout" name="checkout" required />
+
+      <label for="room">Room Type</label>
+      <select id="room" name="room">
+        <option value="Single">Single</option>
+        <option value="Double">Double</option>
+        <option value="Deluxe">Deluxe</option>
+      </select>
+
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
