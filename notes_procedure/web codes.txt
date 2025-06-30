@@ -309,7 +309,194 @@ CONTAINER ID   IMAGE        COMMAND              CREATED         STATUS         
 
 
 ====================================================================
+Why  Microservice
+====================================================================
 
+A microservice is:
+      A small, independently deployable service
+      Focused on doing one job well
+      Runs in isolation (e.g., in its own container)
+      Can be scaled, updated, or replaced independently
+      
+
+
+controlplane:/var/www/html/mero_files$ cat > Dockerfile 
+                  FROM python:3.10-slim            <<< microservice 1
+                  WORKDIR /app                     <<< microservice 2
+                  COPY makalu.py .                 <<< microservice 3
+                  RUN pip install flask            <<< microservice 4
+                  CMD ["python", "makalu.py"]      <<< microservice 5
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------
+| Layer | Dockerfile Step               | Microservice Role                                             |
+| ----- | ----------------------------- | ------------------------------------------------------------- |
+| 1     | `FROM python:3.10-slim`       | Base image with Python runtime (language runtime for service) |
+| 2     | `WORKDIR /app`                | Isolated file system (container workspace)                    |
+| 3     | `COPY makalu.py .`            | Copies in **only this service’s logic**                       |
+| 4     | `RUN pip install flask`       | Installs only what this service needs (Flask)                 |
+| 5     | `CMD ["python", "makalu.py"]` | Runs the microservice (its own endpoint logic)                |
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  Docker
+====================================================================
+Docker is a platform that lets you package, ship, and run applications 
+in isolated environments called containers. It's like putting your app 
+and all its dependencies into a box, so it runs the same everywhere
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+Why  
 ====================================================================
 
 
