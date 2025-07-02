@@ -154,7 +154,15 @@
 </head>
 <body>
   <div class="container">
-    <div class="version">Issued ver 1.3.11</div>
+
+
+
+    <h1> <div class="version">Issued ver 1.3.15  </div> </h1>
+
+
+
+
+    
     <h1>🏨 Welcome to Makalu Hotel Booking</h1>
     
     <form action="submit.php" method="POST" onsubmit="return validateForm()">
