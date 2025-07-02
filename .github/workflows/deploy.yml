@@ -20,15 +20,15 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ vars.EC2_IP_ADDRESS }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H 34.205.73.223  >> ~/.ssh/known_hosts
 
     - name: 📤 Copy Code to EC2
       run: |
-        rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ubuntu@${{ vars.EC2_IP_ADDRESS }}:/home/ubuntu/itmgt-devops-demo
+        rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ubuntu@34.205.73.223:/home/ubuntu/itmgt-devops-demo
 
     - name: 🐳 SSH & Deploy with Docker Compose
       run: |
-        ssh -i ~/.ssh/id_rsa ubuntu@${{ vars.EC2_IP_ADDRESS }} << 'EOF'
+        ssh -i ~/.ssh/id_rsa ubuntu@34.205.73.223 << 'EOF'
           cd /home/ubuntu/itmgt-devops-demo
           docker-compose down
           docker-compose up -d --build
