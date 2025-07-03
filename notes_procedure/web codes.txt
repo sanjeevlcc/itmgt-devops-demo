@@ -372,6 +372,10 @@ docker run -d -p 8989:80 --name makalu-app huma11994/makalu-hotel-app:v1
 
 
 
+====================================================================
+k8 hpa
+====================================================================
+
 
 
 kubectl create deployment my-app --image=huma11994/makalu-hotel-app:v1 
@@ -401,7 +405,7 @@ kubectl delete pod load-generator
 kubectl set resources deployment my-app --requests=cpu=100m
 
 
-
+kubectl run -it load-generator --rm --image=busybox --restart=Never -- sh -c "while sleep 0.01; do wget -q -O- http://makalu-service && echo 'NAMASTE!!'; done"
 
 
 
@@ -409,20 +413,73 @@ kubectl set resources deployment my-app --requests=cpu=100m
 
 
 ====================================================================
-Why  
+k8 hpa
 ====================================================================
 
 
 
+TAB 1 - Deployment and HPA Setup
+-----------------------------------
+
+# Create deployment with your custom image
+kubectl create deployment my-app --image=huma11994/makalu-hotel-app:v1
+
+# Expose the deployment
+kubectl expose deployment my-app --port=80 --type=NodePort --name=makalu-service
+
+
+# Set CPU requests (required for HPA)
+kubectl set resources deployment my-app --requests=cpu=100m
+
+
+# Create HPA with your specifications
+kubectl autoscale deployment my-app --cpu-percent=20 --min=2 --max=5
+
+# Watch the HPA in real-time
+kubectl get hpa -w
+
+
+watch -n 1 kubectl get hpa,deployment,pods
+
+
+
+TAB 2 - Load Generator
+-----------------------
+# Install metrics server (if not installed)
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+
+kubectl patch deployments.apps -n kube-system metrics-server --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+
+
+# Verify installation
+watch  kubectl get deployment metrics-server -n kube-system
 
 
 
 
 
 
+# Run aggressive load generator with NAMASTE messages
+kubectl run -it load-generator --rm --image=busybox --restart=Never -- sh -c "while sleep 0.01; do wget -q -O- http://makalu-service && echo 'NAMASTE!!'; done"
+
+# Alternative with parallel requests (more intense load)
+# kubectl run -it load-generator --rm --image=busybox --restart=Never -- sh -c "for i in $(seq 1 5); do while sleep 0.01; do wget -q -O- http://makalu-service && echo 'NAMASTE!!'; done & done; wait"
+
+
+kubectl run -it load-generator --rm --image=busybox --restart=Never -- sh -c "while sleep 0.01; do wget -q -O- http://makalu-service >/dev/null && echo 'NAMASTE'; done"
 
 
 
+
+
+TAB 3 - Monitoring 
+------------------
+# Watch all components
+watch -n 1 'kubectl get hpa,deployment,pods'
+
+# Check CPU metrics
+kubectl top pods
 
 
 
