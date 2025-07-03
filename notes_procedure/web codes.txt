@@ -362,10 +362,43 @@ and all its dependencies into a box, so it runs the same everywhere
 
 
 
+https://hub.docker.com/r/huma11994/makalu-hotel-app
+
+docker pull huma11994/makalu-hotel-app:v1
+
+docker run -d -p 8989:80 --name makalu-app huma11994/makalu-hotel-app:v1
 
 
 
 
+
+
+
+kubectl create deployment my-app --image=huma11994/makalu-hotel-app:v1 
+
+
+kubectl expose deployment my-app --type=NodePort --port=80 --target-port=80 --name=makalu-service
+
+kubectl patch svc makalu-service -p '{"spec": {"ports": [{"port": 80,"targetPort": 80,"nodePort": 31200}]}}'
+
+
+kubectl get deployments
+kubectl get pods
+kubectl get svc makalu-service
+
+
+http://<node-ip>:31200
+
+kubectl scale deployment my-app --replicas=6
+
+-----------
+
+
+kubectl autoscale deployment my-app --cpu-percent=70 --min=2 --max=4
+kubectl get hpa
+kubectl delete pod load-generator
+
+kubectl set resources deployment my-app --requests=cpu=100m
 
 
 
